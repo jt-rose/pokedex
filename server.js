@@ -19,13 +19,18 @@ const main = async () => {
   /* -------------------------------------------------------------------------- */
   /*                                SHOW POKEMON                                */
   /* -------------------------------------------------------------------------- */
-  //   Index
-  app.get("/", (req, res) => {
-    res.send("show pokedex / poketeam");
+  // pokedex
+  app.get("/pokedex", (req, res) => {
+    res.send("show pokedex");
+  });
+
+  // team
+  app.get("/team", (req, res) => {
+    res.send("show team");
   });
 
   // Show individual pokemon
-  app.get("/pokemon/:id", (req, res) => {
+  app.get("/pokedex/:id", (req, res) => {
     res.send("show individual pokemon");
   });
 
