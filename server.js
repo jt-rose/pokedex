@@ -21,7 +21,9 @@ const main = async () => {
   /* -------------------------------------------------------------------------- */
   // pokedex
   app.get("/pokedex", (req, res) => {
-    res.send("show pokedex");
+    res.render("pokedex.ejs", {
+      title: "Pokedex",
+    });
   });
 
   // team
