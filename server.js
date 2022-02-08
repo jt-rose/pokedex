@@ -28,12 +28,16 @@ const main = async () => {
 
   // team
   app.get("/team", (req, res) => {
-    res.send("show team");
+    res.render("team.ejs", {
+      title: "PokeTeam",
+    });
   });
 
   // Show individual pokemon
   app.get("/pokedex/:id", (req, res) => {
-    res.send("show individual pokemon");
+    res.render("show.ejs", {
+      title: "Pokemon",
+    });
   });
 
   /* -------------------------------------------------------------------------- */
@@ -52,7 +56,9 @@ const main = async () => {
   // Edit
   // GET /pokemon/:id/edit
   app.get("/team/edit/:id", (req, res) => {
-    res.send("edit form for pokemon team member (but not for pokedex)");
+    res.render("edit.ejs", {
+      title: "Edit Pokemon",
+    });
   });
 
   // Update
