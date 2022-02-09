@@ -74,9 +74,12 @@ const main = async () => {
   /* -------------------------------------------------------------------------- */
   // New
   // submit form to add new pokemen to team
-  app.post("/team/add/:id", (req, res) => {
+  app.post("/team/add/:id", async (req, res) => {
     console.log("pokemon added to team");
-    res.redirect("/");
+    const id = req.params.id;
+    const pokemon = await Pokedex.findById(id);
+    await MyTeam.insertMany([pokemon]);
+    res.redirect("/team");
   });
 
   /* -------------------------------------------------------------------------- */

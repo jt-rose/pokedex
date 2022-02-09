@@ -4,5 +4,8 @@
     <%- include("./partials/header.ejs") %>
     <p>I'm the Individual pokemon page</p>
     <h1><%=pokemon.name%></h1>
+    <form action="/team/add/<%=pokemon._id%>" method="post">
+      <button>Add to my team</button>
+    </form>
   </body>
 </html>
