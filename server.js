@@ -1,11 +1,28 @@
 const express = require("express");
 const methodOverride = require("method-override");
+const mongoose = require("mongoose");
+const PokemonCollections = require("./models/Pokemon");
+
+const { Pokedex, MyTeam } = PokemonCollections;
+// const Pokedex = PokemonCollections.Pokedex
+// const MyTeam = PokemonCollections.MyTeam
 
 const main = async () => {
   /* -------------------------------------------------------------------------- */
   /*                               initialize app                               */
   /* -------------------------------------------------------------------------- */
   const app = express();
+
+  /* -------------------------------------------------------------------------- */
+  /*                              connect database                              */
+  /* -------------------------------------------------------------------------- */
+
+  await mongoose.connect("mongodb://localhost:27017/pokemon");
+  console.log("connected to mongoose");
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 middleware                                 */
+  /* -------------------------------------------------------------------------- */
 
   // set up body parser
   app.use(express.urlencoded({ extended: true }));
@@ -24,16 +41,21 @@ const main = async () => {
   /*                                SHOW POKEMON                                */
   /* -------------------------------------------------------------------------- */
   // pokedex
-  app.get("/pokedex", (req, res) => {
+  app.get("/pokedex", async (req, res) => {
+    const pokemon = await Pokedex.find();
     res.render("pokedex.ejs", {
       title: "Pokedex",
+      // pokemon: pokemon
+      pokemon,
     });
   });
 
   // team
-  app.get("/team", (req, res) => {
+  app.get("/team", async (req, res) => {
+    const myTeam = await MyTeam.find();
     res.render("team.ejs", {
       title: "PokeTeam",
+      myTeam,
     });
   });
 

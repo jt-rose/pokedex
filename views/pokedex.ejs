@@ -3,5 +3,10 @@
   <body>
     <%- include("./partials/header.ejs") %>
     <p>I'm the Pokedex page</p>
+    <ul>
+      <% for (const pm of pokemon) { %>
+      <li><%=pm.name %></li>
+      <% } %>
+    </ul>
   </body>
 </html>
