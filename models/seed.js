@@ -3,7 +3,8 @@ const pokedata = require("./pokedexData");
 const pokemon = require("./Pokemon");
 
 const seedDatabase = async () => {
-  await mongoose.connect("mongodb://localhost:27017/pokedex");
+  // connect to database
+  await mongoose.connect("mongodb://localhost:27017/pokemon");
   console.log("connected to mongoose");
 
   // clear any previous data
