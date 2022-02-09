@@ -60,9 +60,12 @@ const main = async () => {
   });
 
   // Show individual pokemon
-  app.get("/pokedex/:id", (req, res) => {
+  app.get("/pokedex/:id", async (req, res) => {
+    const id = req.params.id;
+    const pokemon = await Pokedex.findById(id);
     res.render("show.ejs", {
       title: "Pokemon",
+      pokemon,
     });
   });
 
