@@ -1,4 +1,5 @@
 const express = require("express");
+const methodOverride = require("method-override");
 
 const main = async () => {
   /* -------------------------------------------------------------------------- */
@@ -8,6 +9,9 @@ const main = async () => {
 
   // set up body parser
   app.use(express.urlencoded({ extended: true }));
+
+  // set up method override for PUT and DELETE methods
+  app.use(methodOverride("_method"));
 
   // set up public assets
   app.use(express.static("public"));
