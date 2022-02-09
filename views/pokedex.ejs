@@ -5,7 +5,9 @@
     <p>I'm the Pokedex page</p>
     <ul>
       <% for (const pm of pokemon) { %>
-      <li><a href="/pokedex/<%=pm._id%>"><%=pm.name %></a></li>
+      <li>
+        <a href="/pokedex/<%=pm._id%>"><img src="<%=pm.img%>" alt="" /></a>
+      </li>
       <% } %>
     </ul>
   </body>
